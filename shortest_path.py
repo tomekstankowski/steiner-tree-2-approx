@@ -8,12 +8,12 @@ class _Node:
         self.visited = False
 
 
-def shortest_path_length(adj_list, src, dest):
+def shortest_paths_lengths(adj_list, src):
     n = len(adj_list)
     nodes = [_Node(i) for i in range(n)]
     unvisited_nodes = nodes.copy()
     nodes[src].distance = 0
-    while not nodes[dest].visited:
+    while len(unvisited_nodes) > 0:
         node = min(unvisited_nodes, key=lambda n: n.distance)
         for (number, weight) in adj_list[node.number]:
             adj_node = nodes[number]
@@ -24,4 +24,4 @@ def shortest_path_length(adj_list, src, dest):
                 adj_node.distance = alt_distance
         node.visited = True
         unvisited_nodes.remove(node)
-    return nodes[dest].distance
+    return list(map(lambda n: n.distance, nodes))
