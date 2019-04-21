@@ -1,5 +1,5 @@
-import min_spanning_tree
-import shortest_path
+from min_spanning_tree import min_spanning_tree_weight
+from shortest_path import shortest_path_length
 
 class Edge:
     def __init__(self, u, v, w):
@@ -17,7 +17,7 @@ def steiner_tree_weight(n, E, T):
     Ec = []
     for i in range(t):
         for j in range(i + 1, t):
-            weight = shortest_path.shortest_path_length(adj_list, T[i], T[j])
+            weight = shortest_path_length(adj_list, T[i], T[j])
             edge = Edge(i, j, weight)
             Ec.append(edge)
-    return min_spanning_tree.min_spanning_tree_weight(t, Ec)
+    return min_spanning_tree_weight(t, Ec)
