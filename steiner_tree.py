@@ -15,7 +15,7 @@ def steiner_tree_weight(n, E, T):
         adj_list[edge.u].append((edge.v, edge.w))
         adj_list[edge.v].append((edge.u, edge.w))
     Ec = []
-    for i in range(t):
+    for i in range(t - 1):
         lengths = shortest_paths_lengths(adj_list, T[i])
         for j in range(i + 1, t):
             weight = lengths[T[j]]
